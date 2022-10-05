@@ -46,6 +46,7 @@ namespace Tres_en_ratlla
             else
             {
                 txtJg1 = "Turn del jugador 1";
+                jugador1 = "jugador 1";
             }
             if(jugador2 != "")
             {
@@ -54,6 +55,7 @@ namespace Tres_en_ratlla
             else
             {
                 txtJg2 = "Turn del jugador 2";
+                jugador2 = "jugador 2";
             }
             turnLbl.Text = txtJg1;
             turno = 0;
@@ -107,51 +109,50 @@ namespace Tres_en_ratlla
         private void CompruebaGanador()
         {
             bool ganaAlguien = false;
-            //Pendiente de arreglar
-            if (Juego[0][0] == Juego[0][1] && Juego[0][1] == Juego[0][2] && Juego[0][0] != 0)
+            if (panel[0,0] == panel[0,1] && panel[0,1] == panel[0,2] && panel[0,0] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[1][0] == Juego[1][1] && Juego[1][1] == Juego[1][2] && Juego[1][0] != 0)
+            else if (panel[1,0] == panel[1,1] && panel[1,1] == panel[1,2] && panel[1,0] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[2][0] == Juego[2][1] && Juego[2][1] == Juego[2][2] && Juego[2][0] != 0)
+            else if (panel[2,0] == panel[2,1] && panel[2,1] == panel[2,2] && panel[2,0] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[0][0] == Juego[1][0] && Juego[1][0] == Juego[2][0] && Juego[0][0] != 0)
+            else if (panel[0,0] == panel[1,0] && panel[1,0] == panel[2,0] && panel[0,0] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[0][1] == Juego[1][1] && Juego[1][1] == Juego[2][1] && Juego[0][1] != 0)
+            else if (panel[0,1] == panel[1,1] && panel[1,1] == panel[2,1] && panel[0,1] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[0][2] == Juego[1][2] && Juego[1][2] == Juego[2][2] && Juego[0][2] != 0)
+            else if (panel[0,2] == panel[1,2] && panel[1,2] == panel[2,2] && panel[0,2] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (Juego[0][0] == Juego[1][1] && Juego[1][1] == Juego[2][2] && Juego[0][0] != 0)
+            else if (panel[0,0] == panel[1,1] && panel[1,1] == panel[2,2] && panel[0,0] != 0)
             {
                 ganaAlguien = true;
             }
-            else if (panel[0][2] == panel[1][1] && Juego[1][1] == Juego[2][0] && Juego[0][2] != 0)
+            else if (panel[0,2] == panel[1,1] && panel[1,1] == panel[2,0] && panel[0,2] != 0)
             {
                 ganaAlguien = true;
             }
             if (ganaAlguien == true)
             {
+                turnLbl.Text = "S'acabat!";
                 if (turno % 2 == 0)
-                {
-                    MessageBox.Show("Fin", "Gana Jugador1(rojas/cruces)");
-                    Iniciar();
+                {   
+                    MessageBox.Show("Gana " + jugador2, "Fin");
                 }
                 else
                 {
-                    MessageBox.Show(this, "Fin", "Gana Jugador2(azules/círculos)");
-                    Iniciar();
+                    MessageBox.Show( "Gana " + jugador1, "Fin");
                 }
+                Iniciar();
             }
         }
     }
